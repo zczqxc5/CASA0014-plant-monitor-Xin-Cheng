@@ -14,7 +14,7 @@ c. Whole connection<br>
 
 
 # Reminds
-1. If you need to use a function inside the main loop, you need to have a return in that loop, with staro of “float”
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/image.png" width="100px">
+1. If you need to use a function inside the main loop, you need to have a return in that loop, with staro of “float”<br>
+   <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/image.png" width="500px">
 
 
