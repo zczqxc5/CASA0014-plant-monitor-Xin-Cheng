@@ -1,11 +1,12 @@
 # CASA0014-PlantMonitor-Xin-Cheng
 
 # Arduino Circuit
-1. Expand function(with arduino UNO R3): Ultrasonic sensors control the active buzzer to play music and the LED flash，When the object is close to the ultrasonic sensor, the buzzer and LED start to wo
+1. Expand function(with arduino UNO R3): Ultrasonic sensors control the active buzzer to play music and the LED flash，When the object is close to the ultrasonic sensor, the buzzer and LED start to work
 ![598b7b9bd06c72aa865ef5839df9fe1](https://github.com/zczqxc5/CASA0014-PlantMonitor-Xin-Cheng/assets/146037962/254de5ad-3e11-47bc-9912-92e0d015729f)
 2. Add expand function with Plant Monitor:
-   a. Different of two Arduino board(
-   ![image](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/a0287e71-41dc-453a-ae31-ec917bc8c0f4)![37b0e000830f1fdc959db474eea3fc8](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/02615b53-87f6-4cf5-9183-3ce4d0bb3ab0)
+   a. Different of two Arduino board
+   ![image](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/a0287e71-41dc-453a-ae31-ec917bc8c0f4)!
+   [37b0e000830f1fdc959db474eea3fc8](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/02615b53-87f6-4cf5-9183-3ce4d0bb3ab0)
    b. Welding method (prototype only)
    ![195559164985fe32466b3c4b619cec1](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/556f24f6-1264-4838-9510-b5fde50a85aa)
    c. Whole connection
