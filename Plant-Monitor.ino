@@ -20,8 +20,11 @@
 // Sensors - DHT22 and Nails
 uint8_t DHTPin = 12;        // on Pin 2 of the Huzzah
 uint8_t soilPin = 0;      // ADC or A0 pin on Huzzah
-float Temperature;
+float TemperatureC;
 float Humidity;
+float TemperatureF;
+float temp;  
+
 int Moisture = 1; // initial value just in case web page is loaded before readMoisture called
 int sensorVCC = 13;
 int blueLED = 2;
@@ -123,7 +126,7 @@ float durt[]=
 };
 const int TrigPin = 15;
 const int EchoPin = 16;
-float cm;
+int cm=1;
 //定义蜂鸣器引脚，音符长度变量
 int buzzer_pin = 14;
 int length;
@@ -201,15 +204,58 @@ void loop() {
   // handler for receiving requests to webserver
   server.handleClient();
 
-  if (minuteChanged()) {
+    delay(1000);
     readMoisture();
+    readDistance();
     sendMQTT();
     Serial.println(GB.dateTime("H:i:s")); // UTC.dateTime("l, d-M-y H:i:s.v T")
-  }
+  
   
   client.loop();
 }
 
+float readDistance(){
+  
+   digitalWrite(TrigPin, LOW); //给Trig发送一个低电平
+    
+    delayMicroseconds(2); //等待 2微妙
+    
+    digitalWrite(TrigPin,HIGH); //给Trig发送一个高电平
+    
+    delayMicroseconds(10); //等待 10微妙
+    
+    digitalWrite(TrigPin, LOW); //给Trig发送一个低电平
+    
+    temp = float(pulseIn(EchoPin, HIGH)); //存储回波等待时间,
+    
+    //pulseIn函数会等待引脚变为HIGH,开始计算时间,再等待变为LOW并停止计时
+    
+    //返回脉冲的长度
+    
+    //声速是:340m/1s 换算成 34000cm / 1000000μs => 34 / 1000
+    
+    //因为发送到接收,实际是相同距离走了2回,所以要除以2
+    
+    //距离(厘米) = (回波时间 * (34 / 1000)) / 2
+    
+    //简化后的计算公式为 (回波时间 * 17)/ 1000
+    
+    cm = (temp * 17 )/1000; //把回波时间换算成cm
+    
+    Serial.print("Echo =");
+    
+    Serial.print(temp);//串口输出等待时间的原始数据
+    
+    Serial.print(" | | Distance = ");
+    
+    Serial.print(cm);//串口输出距离换算成cm的结果
+    
+    Serial.println("cm");
+    
+    delay(100);
+return(cm);
+
+}
 float readMoisture(){  //need return
   
   // power the sensor
@@ -261,11 +307,17 @@ void sendMQTT() {
   }
   client.loop();
 
-  Temperature = dht.readTemperature(); // Gets the values of the temperature
-  snprintf (msg, 50, "%.1f", Temperature);
+ TemperatureC = dht.readTemperature(); // Gets the values of the temperature
+  snprintf (msg, 50, "%.1f", TemperatureC);
   Serial.print("Publish message for t: ");
   Serial.println(msg);
-  client.publish("student/CASA0014/plant/zczqxc5/temperature", msg);
+  client.publish("student/CASA0014/plant/zczqxc5/temperatureC", msg);
+
+  TemperatureF = dht.readTemperature(true); // Gets the values of the temperature
+  snprintf (msg, 50, "%.1f", TemperatureF);
+  Serial.print("Publish message for t: ");
+  Serial.println(msg);
+  client.publish("student/CASA0014/plant/zczqxc5/temperatureF", msg);
 
   Humidity = dht.readHumidity(); // Gets the values of the humidity
   snprintf (msg, 50, "%.0f", Humidity);
@@ -279,6 +331,10 @@ void sendMQTT() {
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/moisture", msg);
 
+  snprintf (msg, 50, "%.0i", cm);
+  Serial.print("Publish message for D: ");
+  Serial.println(msg);
+  client.publish("student/CASA0014/plant/zczqxc5/Distance", msg);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -332,9 +388,9 @@ void startWebserver() {
 }
 
 void handle_OnConnect() {
-  Temperature = dht.readTemperature(); // Gets the values of the temperature
+  TemperatureC = dht.readTemperature(); // Gets the values of the temperature
   Humidity = dht.readHumidity(); // Gets the values of the humidity
-  server.send(200, "text/html", SendHTML(Temperature, Humidity, Moisture));
+  server.send(200, "text/html", SendHTML(TemperatureC, Humidity, Moisture,cm));
 }
 
 void handle_NotFound() {
