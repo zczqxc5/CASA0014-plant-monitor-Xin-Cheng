@@ -35,11 +35,11 @@ Different of two boards <br>
 
 ## Visualise data 
 ### Uses the DHT22 to create a simple environment reporting webpage
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="600px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="800px"><br>
 ### On influxDB
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="600px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="800px"><br>
 ### On Grafana and compare data with other students
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/de3df8b5d42cc037416de4bca255481.png" width="600px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/de3df8b5d42cc037416de4bca255481.png" width="800px"><br>
 
 
 
