@@ -13,11 +13,11 @@ When plant needs water, get close to it, the LED light Fast flashing <br>
 When plant don't need water, get close to it, it plays music “jingle bell”
 
 ## Prerequisites
-· Raspberry Pi
-· MQTT protocol
-· pre-designed Huzzah(with WIFI module)
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="200px">
-· Sensors: DHT22, ultrasonic rangefinder 
+· Raspberry Pi<br>
+· MQTT protocol<br>
+· pre-designed Huzzah(with WIFI module)<br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="200px"><br>
+· Sensors: DHT22, ultrasonic rangefinder <br>
 
 
 ## Visualise data & Rasberry Pi connected
