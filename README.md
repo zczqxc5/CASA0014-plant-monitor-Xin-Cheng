@@ -6,11 +6,18 @@ This is a sensor system built for monitoring and store soil moisture and environ
 ## Functions
 ### 1. Real-time sensor data monitoring
 get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
-### 2. Live data presentation and transmi
+### 2. Live data presentation and transmission
 present live data via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
 ### 3. Remind user to water plant 
-When plant needs water, get close to it, the LED light Fast flashing
+When plant needs water, get close to it, the LED light Fast flashing <br>
 When plant don't need water, get close to it, it plays music “jingle bell”
+
+## Prerequisites
+· Raspberry Pi
+· MQTT protocol
+· pre-designed Huzzah(with WIFI module)
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="200px">
+· Sensors: DHT22, ultrasonic rangefinder 
 
 
 ## Visualise data & Rasberry Pi connected
