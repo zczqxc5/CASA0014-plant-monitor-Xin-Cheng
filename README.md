@@ -31,15 +31,18 @@ In the final prototype, I combined the functions on the two boards into one. I w
 Different of two boards <br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/37b0e000830f1fdc959db474eea3fc8.png" width="350px"> <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/b0fc1a147b849f3fdf48bb5e58b6b69.png" width="550px"><br>
 
-## Visualise data & Rasberry Pi connected
-
+## Visualise data via Rasberry Pi 
+### On influxDB
+<img "https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="400px"><br>
+### On Grafana and compare data with other students
+<img "https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/de3df8b5d42cc037416de4bca255481.png" width="400px"><br>
 
 
 
 ## Limitation
 1. Welding method between Huzzah and wires is not strong (prototype only)<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/195559164985fe32466b3c4b619cec1.jpg" width="400px"><br>
-2. Moderate data changes drastically with the depth and distance of the nail insertion, so prototype cannot move the nail when it is actually used
+2. Moderate data changes drastically with the depth and distance of the nail insertion, so prototype cannot move the nail when it is actually used<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/115a93d8ce7e74c5d6df9ab7d53ee1e.jpg" width="400px"><br>" width="400px"><br>
 
 
