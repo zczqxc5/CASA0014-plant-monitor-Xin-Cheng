@@ -20,13 +20,13 @@ When plant don't need water, get close to it, it plays music “jingle bell”
 · Sensors: DHT22, ultrasonic rangefinder <br>
 
 ## Multiple Physical Prototypes methods
-In this project, the prototype was designed in three phases. In the first stage, I completed the welding of the pre-designed Huzzah, reading Moisture and DHT library data Present live data via a webserver and send data via wifi to an MQTT server are realized
+In this project, the prototype was designed in three phases. In the first stage, I completed the welding of the pre-designed Huzzah, reading Moisture and DHT library data Present live data via a webserver and send data via wifi to an MQTT server are realized<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/8bdd4a0682ba0da0b75f7b0ef9ff61a.jpg" width="500px"><br>
 
-The second step, I realized in the Arduino UNO R3 by monitoring the data of the ultrasonic sensor, to achieve the song "jingle bell" play or not. This is because the pre-designed Huzzah has no bare pins and it was difficult for me to add features with it and test the functionality
+The second step, I realized in the Arduino UNO R3 by monitoring the data of the ultrasonic sensor, to achieve the song "jingle bell" play or not. This is because the pre-designed Huzzah has no bare pins and it was difficult for me to add features with it and test the functionality<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/598b7b9bd06c72aa865ef5839df9fe1.jpg" width="500px"><br>
 
-In the final prototype, I combined the functions on the two boards into one. I welded Huzzah's unused pins "2,14,15,16" and power supply and ground with wires, to connect the functions I wrote on the second prototype
+In the final prototype, I combined the functions on the two boards into one. I welded Huzzah's unused pins "2,14,15,16" and power supply and ground with wires, to connect the functions I wrote on the second prototype<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/7a7cc263fc17feafa366a0c61c7ca0d.jpg" width="500px"><br>
 Different of two boards <br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/37b0e000830f1fdc959db474eea3fc8.png" width="350px"> <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/b0fc1a147b849f3fdf48bb5e58b6b69.png" width="550px"><br>
