@@ -16,7 +16,7 @@ When plant don't need water, get close to it, it plays music “jingle bell”
 · Raspberry Pi<br>
 · MQTT protocol<br>
 · pre-designed Huzzah(with WIFI module)<br>
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="200px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="400px"><br>
 · Sensors: DHT22, ultrasonic rangefinder <br>
 
 
