@@ -1,8 +1,17 @@
 # CASA0014-PlantMonitor-Xin-Cheng
 
+## Overview
+This is a sensor system built for monitoring and store soil moisture and environment conditions, reminds users to water plant when it needs. 
+
 ## Functions
-1. get and send Moisture, Temperature(/C),Temperature(#F),Distance, Humidity to MQTT
-2. voice
+### Real-time sensor data monitoring
+get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
+### Real-time sensor data monitoring
+present live data via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
+### Remind user to water plant 
+When plant needs water, get close to it, the LED light Fast flashing
+When plant don't need water, get close to it, it plays music “jingle bell”
+
 
 ## Visualise data & Rasberry Pi connected
 
