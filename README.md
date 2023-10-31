@@ -7,7 +7,7 @@ This is a sensor system built for monitoring and store soil moisture and environ
 ### 1. Real-time sensor data monitoring
 Get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
 ### 2. Live data presentation and transmission
-Present live data via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
+Present live data(Distance,Temperature(/C),Temperature(#F), Humidity) via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
 ### 3. Remind user to water plant 
 When plant needs water, get close to it, the LED light Fast flashing <br>
 When plant don't need water, get close to it, it plays music “jingle bell”
@@ -40,6 +40,6 @@ Different of two boards <br>
 1. Welding method between Huzzah and wires is not strong (prototype only)<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/195559164985fe32466b3c4b619cec1.jpg" width="400px"><br>
 2. Moderate data changes drastically with the depth and distance of the nail insertion, so prototype cannot move the nail when it is actually used
-<img src="<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/195559164985fe32466b3c4b619cec1.jpg" width="400px"><br>" width="400px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/115a93d8ce7e74c5d6df9ab7d53ee1e.jpg" width="400px"><br>" width="400px"><br>
 
 
