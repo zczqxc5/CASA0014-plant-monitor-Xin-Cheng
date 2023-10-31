@@ -1,47 +1,40 @@
 /*
-    Get date and time - uses the ezTime library at https://github.com/ropg/ezTime -
-    and then show data from a DHT22 on a web page served by the Huzzah and
-    push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
+    get date and time - uses the ezTime library 
+    show data from a DHT22 on a web page served by the Huzzah 
+    push data to an MQTT server
+    control active buzzer by moisture data and ultrasonic rangefinder
 
-    Duncan Wilson
-    CASA0014 - 2 - Plant Monitor Workshop
-    May 2020
+    Xin Cheng
+    Oct 2023
 */
 
+//include library
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-#include <ezTime.h>
-#include <PubSubClient.h>
+#include <ezTime.h> //date and time library
+#include <PubSubClient.h> //connected MQTT library
+
 #include <DHT.h>
-#include <DHT_U.h>
+#include <DHT_U.h>//nail sensor & humidity & temperature library
 
 #define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 
+
 // Sensors - DHT22 and Nails
-uint8_t DHTPin = 12;        // on Pin 2 of the Huzzah
-uint8_t soilPin = 0;      // ADC or A0 pin on Huzzah
+uint8_t DHTPin = 12;        //Pin 12 on Huzzah
+uint8_t soilPin = 0;      // A0 pin on Huzzah for nail
 float TemperatureC;
 float Humidity;
 float TemperatureF;
 float temp;  
-
 int Moisture = 1; // initial value just in case web page is loaded before readMoisture called
 int sensorVCC = 13;
 int blueLED = 2;
 DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
 
 
-// Wifi and MQTT
+// Set Wifi and MQTT
 #include "arduino_secrets.h" 
-/*
-**** please enter your sensitive data in the Secret tab/arduino_secrets.h
-**** using format below
-
-#define SECRET_SSID "ssid name"
-#define SECRET_PASS "ssid password"
-#define SECRET_MQTTUSER "user name - eg student"
-#define SECRET_MQTTPASS "password";
- */
 
 const char* ssid     = SECRET_SSID;
 const char* password = SECRET_PASS;
@@ -56,11 +49,11 @@ long lastMsg = 0;
 char msg[50];
 int value = 0;
 
-// Date and time
+// London timezone
 Timezone GB;
 
 //extend function with buzzer and LED
-//中音NTF 0为空拍
+//define medium note value
 #define NTF0 -1
 #define NTF1 350
 #define NTF2 393	
@@ -70,7 +63,7 @@ Timezone GB;
 #define NTF6 624
 #define NTF7 661
 
-//高音NTFH
+//define high note value
 #define NTFH1 700
 #define NTFH2 786
 #define NTFH3 882
@@ -79,7 +72,7 @@ Timezone GB;
 #define NTFH6 996
 #define NTFH7 1023
 
-//低音NTFL
+//define low note value
 #define NTFL1 175
 #define NTFL2 196
 #define NTFL3 221
@@ -88,7 +81,7 @@ Timezone GB;
 #define NTFL6 294
 #define NTFL7 330
 
-//音符频率数组 
+//Note frequency array
 int tune[]=
 {
 	NTF3,NTF3,NTF3,NTF3,NTF3,NTF3,
@@ -106,7 +99,8 @@ int tune[]=
 	NTFL6,NTF4,NTF3,NTF2,NTF5,NTF5,NTF5,NTF5,
 	NTF6,NTF5,NTF4,NTF2,NTF1,NTF0
 };
-//音符节拍数组
+
+//Note beat array
 float durt[]=
 {
 	0.5,0.5,1,0.5,0.5,1,
@@ -124,13 +118,16 @@ float durt[]=
 	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
 	0.5,0.5,0.5,0.5,0.75,0.25
 };
+
+
+//semsors -- buzzer and ultrasonic rangefinder
 const int TrigPin = 15;
-const int EchoPin = 16;
-int cm=1;
-//定义蜂鸣器引脚，音符长度变量
-int buzzer_pin = 14;
+const int EchoPin = 16; 
+int cm=1; //initial distance value 
+int buzzer_pin = 14; 
 int length;
-int ledp=2;
+int ledp=2; //led pin
+
 
 
 void setup() {
@@ -147,14 +144,12 @@ void setup() {
   pinMode(blueLED, OUTPUT); 
   digitalWrite(blueLED, HIGH);
 
-  //set up LED & buzzer &  ultrasonic sensor
+  //set up LED & buzzer & ultrasonic rangefinder
   pinMode(buzzer_pin, OUTPUT);
   length = sizeof(tune)/sizeof(tune[0]);
-
   pinMode(TrigPin, OUTPUT);
   pinMode(EchoPin, INPUT);
   pinMode(ledp, OUTPUT);
-
 
   // open serial connection for debug info
   Serial.begin(115200);
@@ -175,93 +170,83 @@ void setup() {
 
 }
 
-void loop() {
-    digitalWrite(14, LOW);
 
-  digitalWrite(TrigPin, LOW); //低高低电平发一个短时间脉冲去TrigPin
+void loop() {
+  //set up ultrasonic rangefinder function
+  digitalWrite(14, LOW);
+
+  digitalWrite(TrigPin, LOW); //send a short pulse to TrigPin
   delayMicroseconds(2);
   digitalWrite(TrigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(TrigPin, LOW);
 
+  //call readDistance function to get distance value "cm"
+  cm = readDistance();
+  
 
-  cm = pulseIn(EchoPin, HIGH) / 58.0; //将回波时间换算成cm
-  cm = (int(cm * 100.0)) / 100.0; //保留两位小数
+  //Distance in 2-10cm humidity greater than 100 ,then play "jingle bell"
   if (cm>=2 && cm<=10 && readMoisture()>100)
-    //for循环演奏曲子
+    //The for loop plays the tune
     for(int x=0;x<length;x++)
     {
       tone(buzzer_pin, tune[x]);
       digitalWrite(ledp,HIGH);
-      delay(500*durt[x]);	
+      delay(500*durt[x]);	  // this 500 controls the duration of each note to set the tempo of the tune
       digitalWrite(ledp,LOW);	
-      delay(100*durt[x]);				//这里的500为控制每个音符的时长来定曲子的节奏
+      delay(100*durt[x]);				
       noTone(buzzer_pin);
     }
-    delay(500);								//开始下一轮循环的时间间隔
+    delay(500);							// interval to start the next loop
 
 
   // handler for receiving requests to webserver
   server.handleClient();
 
-    delay(1000);
-    readMoisture();
-    readDistance();
-    sendMQTT();
-    Serial.println(GB.dateTime("H:i:s")); // UTC.dateTime("l, d-M-y H:i:s.v T")
+  //call function
+  delay(1000); //time interval to refresh MQTT data
+  readMoisture();
+  readDistance();
+  sendMQTT();
+  Serial.println(GB.dateTime("H:i:s")); // UTC.dateTime("l, d-M-y H:i:s.v T")
   
   
   client.loop();
 }
 
-float readDistance(){
-  
-   digitalWrite(TrigPin, LOW); //给Trig发送一个低电平
-    
-    delayMicroseconds(2); //等待 2微妙
-    
-    digitalWrite(TrigPin,HIGH); //给Trig发送一个高电平
-    
-    delayMicroseconds(10); //等待 10微妙
-    
-    digitalWrite(TrigPin, LOW); //给Trig发送一个低电平
-    
-    temp = float(pulseIn(EchoPin, HIGH)); //存储回波等待时间,
-    
-    //pulseIn函数会等待引脚变为HIGH,开始计算时间,再等待变为LOW并停止计时
-    
-    //返回脉冲的长度
-    
-    //声速是:340m/1s 换算成 34000cm / 1000000μs => 34 / 1000
-    
-    //因为发送到接收,实际是相同距离走了2回,所以要除以2
-    
-    //距离(厘米) = (回波时间 * (34 / 1000)) / 2
-    
-    //简化后的计算公式为 (回波时间 * 17)/ 1000
-    
-    cm = (temp * 17 )/1000; //把回波时间换算成cm
-    
-    Serial.print("Echo =");
-    
-    Serial.print(temp);//串口输出等待时间的原始数据
-    
-    Serial.print(" | | Distance = ");
-    
-    Serial.print(cm);//串口输出距离换算成cm的结果
-    
-    Serial.println("cm");
-    
-    delay(100);
-return(cm);
 
+//Get distance value by ultrasonic rangefinder
+float readDistance(){   //need return
+  digitalWrite(TrigPin, LOW); //Send low to the TrigPin
+  delayMicroseconds(2); //wait 2 microsecond
+  digitalWrite(TrigPin,HIGH); //Send high to the TrigPin
+  delayMicroseconds(10); //wait 10 microsecond
+  digitalWrite(TrigPin, LOW); //Send low to the TrigPin
+    
+  //Store the echo time
+  temp = float(pulseIn(EchoPin, HIGH)); 
+
+  //convert echo time to distance(cm)
+  cm = (temp * 17 )/1000; //The speed of sound is :340m/1s, Distance (cm) = (echo time * (34/1000)) / 2
+
+  //Print data in Monitor
+  Serial.print("Echo =");
+  Serial.print(temp);  //echo time
+  Serial.print(" | | Distance = ");
+  Serial.print(cm);  //Actural distance
+  Serial.println("cm");
+  delay(100);
+  return(cm); //return distance value
 }
+
+//Get Moisture value by DHT22
 float readMoisture(){  //need return
   
   // power the sensor
   digitalWrite(sensorVCC, HIGH);
   digitalWrite(blueLED, LOW);
   delay(100);
+  
   // read the value from the sensor:
   Moisture = analogRead(soilPin);         
   digitalWrite(sensorVCC, LOW);  
@@ -269,9 +254,9 @@ float readMoisture(){  //need return
   delay(100);
   Serial.print("Wet ");
   Serial.println(Moisture);   // read the value from the nails
- return Moisture;  //get the value of mositure
-
+  return Moisture;  //get the value of mositure
 }
+
 
 void startWifi() {
   // We start by connecting to a WiFi network
@@ -291,51 +276,60 @@ void startWifi() {
   Serial.println(WiFi.localIP());
 }
 
+
 void syncDate() {
   // get real date and time
   waitForSync();
   Serial.println("UTC: " + UTC.dateTime());
   GB.setLocation("Europe/London");
   Serial.println("London time: " + GB.dateTime());
-
 }
+
 
 void sendMQTT() {
 
+  //check connect
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
 
- TemperatureC = dht.readTemperature(); // Gets the values of the temperature
+  //send Temperature(unit:C)
+  TemperatureC = dht.readTemperature(); // Gets the values of the temperature
   snprintf (msg, 50, "%.1f", TemperatureC);
   Serial.print("Publish message for t: ");
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/temperatureC", msg);
 
+  //send Temperature(unit:F)
   TemperatureF = dht.readTemperature(true); // Gets the values of the temperature
   snprintf (msg, 50, "%.1f", TemperatureF);
   Serial.print("Publish message for t: ");
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/temperatureF", msg);
 
+  //send humidity
   Humidity = dht.readHumidity(); // Gets the values of the humidity
   snprintf (msg, 50, "%.0f", Humidity);
   Serial.print("Publish message for h: ");
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/humidity", msg);
 
-  //Moisture = analogRead(soilPin);   // moisture read by readMoisture function
+  //send Moisture = analogRead(soilPin);   
+  //moisture read by readMoisture function
   snprintf (msg, 50, "%.0i", Moisture);
   Serial.print("Publish message for m: ");
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/moisture", msg);
 
+  //send Distance
+  //Distance read by readDistance function
   snprintf (msg, 50, "%.0i", cm);
   Serial.print("Publish message for D: ");
   Serial.println(msg);
   client.publish("student/CASA0014/plant/zczqxc5/Distance", msg);
 }
+
 
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
@@ -353,8 +347,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
   } else {
     digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
   }
-
 }
+
 
 void reconnect() {
   // Loop until we're reconnected
@@ -379,6 +373,7 @@ void reconnect() {
   }
 }
 
+
 void startWebserver() {
   // when connected and IP address obtained start HTTP server  
   server.on("/", handle_OnConnect);
@@ -387,11 +382,13 @@ void startWebserver() {
   Serial.println("HTTP server started");  
 }
 
+
 void handle_OnConnect() {
   TemperatureC = dht.readTemperature(); // Gets the values of the temperature
   Humidity = dht.readHumidity(); // Gets the values of the humidity
-  server.send(200, "text/html", SendHTML(TemperatureC, Humidity, Moisture,cm));
+  server.send(200, "text/html", SendHTML(TemperatureC, Humidity, Moisture));
 }
+
 
 void handle_NotFound() {
   server.send(404, "text/plain", "Not found");
