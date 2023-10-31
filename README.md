@@ -47,7 +47,7 @@ Different of two boards <br>
 2. Moderate data changes drastically with the depth and distance of the nail insertion, so prototype cannot move the nail when it is actually used<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/115a93d8ce7e74c5d6df9ab7d53ee1e.jpg" width="400px"><br>
 3. Ultrasonic rangefinder will not output data to MQTT when there is no object near it for a long time, and it will take a certain time to restore the display, even if there is an object near it<br>
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/2eb7e256de489f96565be438970ae47.png" width="400px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/2eb7e256de489f96565be438970ae47.png" width="800px"><br>
 
 
 
