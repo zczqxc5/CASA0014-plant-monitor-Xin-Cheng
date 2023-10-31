@@ -4,11 +4,11 @@
 This is a sensor system built for monitoring and store soil moisture and environment conditions, reminds users to water plant when it needs. 
 
 ## Functions
-### Real-time sensor data monitoring
+### 1. Real-time sensor data monitoring
 get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
-### Real-time sensor data monitoring
+### 2. Live data presentation and transmi
 present live data via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
-### Remind user to water plant 
+### 3. Remind user to water plant 
 When plant needs water, get close to it, the LED light Fast flashing
 When plant don't need water, get close to it, it plays music “jingle bell”
 
