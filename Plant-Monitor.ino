@@ -186,7 +186,7 @@ void loop() {
   
 
   //Distance in 2-10cm humidity greater than 100 ,then play "jingle bell"
-  if (cm>=2 && cm<=10 && readMoisture()>100)
+  if (cm>=2 && cm<=10 && readMoisture()>100){
     //The for loop plays the tune
     for(int x=0;x<length;x++)
     {
@@ -198,8 +198,33 @@ void loop() {
       noTone(buzzer_pin);
     }
     delay(500);							// interval to start the next loop
-
-
+  }
+  else if (cm>=2 && cm<=10 && readMoisture()<=100){
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+    digitalWrite(ledp,HIGH);
+    delay(100);
+    digitalWrite(ledp,LOW);
+    delay(100);
+  }
   // handler for receiving requests to webserver
   server.handleClient();
 
