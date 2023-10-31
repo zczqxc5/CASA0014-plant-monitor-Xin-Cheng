@@ -1,7 +1,8 @@
 # CASA0014-PlantMonitor-Xin-Cheng
 
 ## Overview
-This is a sensor system built for monitoring and store soil moisture and environment conditions, reminds users to water plant when it needs. I also wanted to make the plant feel like a Christmas tree and add some interaction functions for users to communicate with collected data.
+This is a sensor system built for monitoring and store soil moisture and environment conditions, reminds users to water plant when it needs. I also wanted to make the plant feel like a Christmas tree and add some interaction functions for users to communicate with collected data.<br>
+main codes are in“Plant-Monitor.ino”file
 
 ## Functions
 ### 1. Real-time sensor data monitoring
