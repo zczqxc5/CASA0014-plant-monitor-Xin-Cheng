@@ -33,7 +33,9 @@ In the final prototype, I combined the functions on the two boards into one. I w
 Different of two boards <br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/37b0e000830f1fdc959db474eea3fc8.png" width="350px"> <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/b0fc1a147b849f3fdf48bb5e58b6b69.png" width="550px"><br>
 
-## Visualise data via Rasberry Pi 
+## Visualise data 
+### Uses the DHT22 to create a simple environment reporting webpage
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="600px"><br>
 ### On influxDB
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="600px"><br>
 ### On Grafana and compare data with other students
