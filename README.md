@@ -19,6 +19,7 @@ When plant don't need water, get close to it, it plays music “jingle bell”
 · pre-designed Huzzah(with WIFI module)<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="400px"><br>
 · Sensors: DHT22, ultrasonic rangefinder <br>
+· libraries(see in code)
 
 ## Multiple Physical Prototypes methods
 In this project, the prototype was designed in three phases. In the first stage, I completed the welding of the pre-designed Huzzah, reading Moisture and DHT library data Present live data via a webserver and send data via wifi to an MQTT server are realized<br>
@@ -36,6 +37,7 @@ Different of two boards <br>
 ## Visualise data 
 ### Uses the DHT22 to create a simple environment reporting webpage
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="800px"><br>
+### On MQTT
 ### On influxDB
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="800px"><br>
 ### On Grafana and compare data with other students
