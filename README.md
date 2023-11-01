@@ -38,7 +38,7 @@ Different of two boards <br>
 ### Uses the DHT22 to create a simple environment reporting webpage
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="800px"><br>
 ### On MQTT
-![image](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/3d7736a8-ee52-4ba6-bf05-9feec57b154a)
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/24c41c365bcdf89296e4e32737799bf.png" width="800px"><br>
 
 ### On influxDB
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="800px"><br>
