@@ -27,8 +27,8 @@ When plant don't need water, get close to it, it plays music “jingle bell”
 See detail steps in CASA0014-Connected Environment Workshop. https://workshops.cetools.org/codelabs/CASA0014-2-Plant-Monitor/index.html?index=..%2F..casa0014#0
 
 1. Set up the circuit on pre-designed ESP8266<br>
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a464000de3174844b494284d1e9cbd8.jpg" width="300px"><img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/7a7cc263fc17feafa366a0c61c7ca0d.jpg" width="300px"><br>
-3. git clone code "Plant-Monitor.ino"
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a464000de3174844b494284d1e9cbd8.jpg" height="500px"><img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/7a7cc263fc17feafa366a0c61c7ca0d.jpg" height="500px"><br>
+3. git clone code "Plant-Monitor.ino"<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/7a67e23657ca535a5b71973d5f24f92.png" width="200px"><br>
 4. Configure Raspberry PI to be a cloud server and gateway
 5. Flashing Raspberry PI SD card and installing InflusxDB, and Grafana software on it for data visualization and storage
