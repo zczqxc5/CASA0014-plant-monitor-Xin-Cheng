@@ -59,17 +59,17 @@ Different of two boards <br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/6481debf27c1428d13a97c7dad453c4.png" width="800px"><br>
 
 ## What dose data talking about
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/e121ba46e4e3f16a03f38af9de57077.png" width="600px"><br>
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/493d73277a98376b34b260bdde3cba5.png" width="600px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/e121ba46e4e3f16a03f38af9de57077.png" width="800px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/493d73277a98376b34b260bdde3cba5.png" width="800px"><br>
 
 ## Limitation
 1. Welding method between Huzzah and wires is not strong (prototype only)<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/195559164985fe32466b3c4b619cec1.jpg" width="400px"><br>
 2. Moderate data changes drastically with the depth and distance of the nail insertion, so prototype cannot move the nail when it is actually used<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/115a93d8ce7e74c5d6df9ab7d53ee1e.jpg" width="400px"><br>
-When I move nail further:
+When I move nail further:<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/9fd14171cc586bc775fd1718e503798.png" width="400px"><br>
-When I change nail to more depth:
+When I change nail to more depth:<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/d7d6e8e715d729d6a2e982db482d4d7.png" width="400px"><br>
 3. Ultrasonic rangefinder will not output data to MQTT when there is no object near it for a long time, and it will take a certain time to restore the display, even if there is an object near it<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/2eb7e256de489f96565be438970ae47.png" width="800px"><br>
