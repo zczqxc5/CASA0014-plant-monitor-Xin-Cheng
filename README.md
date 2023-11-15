@@ -8,7 +8,7 @@ Main codes are in the “Plant-Monitor.ino” file
 ### 1. Real-time sensor data monitoring
 Get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
 ### 2. Live data presentation and transmission
-Present live data(Distance,Temperature(/C),Temperature(#F), Humidity) via a webserver and send data via wifi to an MQTT server so that historic data could be stored in a data base.
+Send data via wifi to CE MQTT server, and historic data (Distance,Temperature(/C),Temperature(#F), Humidity) could be stored in a webserver.
 ### 3. Remind user to water plant 
 When plant needs water, get close to it, the LED light Fast flashing <br>
 When plant don't need water, get close to it, it plays music “jingle bell”
@@ -18,8 +18,19 @@ When plant don't need water, get close to it, it plays music “jingle bell”
 · MQTT protocol<br>
 · pre-designed Huzzah(with WIFI module)<br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/a4bf1737a54f534ed13b4dd59454edd.png" width="400px"><br>
-· Sensors: DHT22, ultrasonic rangefinder <br>
+· Sensors: nails, DHT22, ultrasonic rangefinder <br>
+· Actuators: LED, active buzzer <br>
 · libraries(see in code)
+· resistor<br>
+
+## Set up steps
+See detail steps in CASA0014-Connected Environment Workshop. https://workshops.cetools.org/codelabs/CASA0014-2-Plant-Monitor/index.html?index=..%2F..casa0014#0
+
+1. Connected ESP8266 to WIFI (see in code)
+2. Publish data on MQTT server<br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/7a67e23657ca535a5b71973d5f24f92.png" width="400px"><br>
+3. Configure Raspberry PI to be a cloud server and gateway
+4. Flashing Raspberry PI SD card and installing InflusxDB, and Grafana software on it for data visualization and storage
 
 ## Multiple Physical Prototypes methods
 In this project, the prototype was designed in three phases. In the first stage, I completed the welding of the pre-designed Huzzah, reading Moisture and DHT library data Present live data via a webserver and send data via wifi to an MQTT server are realized<br>
