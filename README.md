@@ -4,6 +4,9 @@
 This is a sensor system built for monitoring and store soil moisture and environment conditions, reminds users to water plant when it needs. I also wanted to make the plant feel like a Christmas tree and add some interaction functions for users to communicate with collected data.<br>
 Main codes are in the “Plant-Monitor.ino” file
 
+https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/908118a1-4dd8-4e60-8fb7-8d5abea68be5
+
+
 ## Functions
 ### 1. Real-time sensor data monitoring
 Get Moisture, Temperature(/C),Temperature(#F), Humidity data via DHT22, GET Distance data from ultrasonic rangefinder sensor.
