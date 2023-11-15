@@ -51,7 +51,6 @@ Different of two boards <br>
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/dcebaa04c15a3a787cdc4599d9b4675.png" width="800px"><br>
 ### On MQTT(5 output:distance/temperatureC/temperatureF/humidity/moisture
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/24c41c365bcdf89296e4e32737799bf.png" width="800px"><br>
-![059b00e2ee41444619b19a869478dd3](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/91c55b40-774c-409c-b962-941c58a4146f)
 ### On influxDB to store data, I collect almost 7 days data of mine and my classmate Satria's
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/3672d9e83550e8087af3dfa62ab30b2.png" width="800px"><br>
 ### On Grafana and to visualise data for 7 days
