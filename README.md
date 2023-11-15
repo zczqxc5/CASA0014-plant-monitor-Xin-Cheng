@@ -52,12 +52,16 @@ Different of two boards <br>
 ### On MQTT(5 output:distance/temperatureC/temperatureF/humidity/moisture
 <img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/24c41c365bcdf89296e4e32737799bf.png" width="800px"><br>
 ![059b00e2ee41444619b19a869478dd3](https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/assets/146037962/91c55b40-774c-409c-b962-941c58a4146f)
-### On influxDB
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/46dbe8c824dab441607ebfe56df6686.png" width="800px"><br>
-### On Grafana and compare data with other students
-<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/de3df8b5d42cc037416de4bca255481.png" width="800px"><br>
+### On influxDB to store data, I collect almost 7 days data of mine and my classmate Satria's
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/3672d9e83550e8087af3dfa62ab30b2.png" width="800px"><br>
+### On Grafana and to visualise data for 7 days
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/def240071cb85bd863404bc35603993.png" width="800px"><br>
+### On Grafana and to compare data with others for 7 days
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/6481debf27c1428d13a97c7dad453c4.png" width="800px"><br>
 
-
+## What dose data talking about
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/e121ba46e4e3f16a03f38af9de57077.png" width="600px"><br>
+<img src="https://github.com/zczqxc5/CASA0014-plant-monitor-Xin-Cheng/blob/main/pictures/493d73277a98376b34b260bdde3cba5.png" width="600px"><br>
 
 ## Limitation
 1. Welding method between Huzzah and wires is not strong (prototype only)<br>
